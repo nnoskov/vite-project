@@ -1,42 +1,47 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { createElement, useState } from 'react';
 import './App.css';
 
 export const App = () => {
-	const year = new Date().getFullYear(); // Декларативный стиль программирования
-	const [count, setCount] = useState(0);
+	const year = new Date().getFullYear();
+	let [count] = useState(0);
 
-	return (
-		<>
-			<div>
-				{/* Декларативный */}
-				<a href="https://vite.dev" target="_blank">
-					{/* Декларативный */}
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				{/* Декларативный */}
-				<a href="https://react.dev" target="_blank">
-					{' '}
-					{/* Декларативный */}
-					<img src={reactLogo} className="logo react" />
-				</a>
-			</div>
-			{/* Декларативный */}
-			<h1>Vite + React</h1>
-			<div className="card">
-				{/* (count) => count + 1 Императивный */}
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>{' '}
-				<p>
-					Edit <code>src/App.jsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more in {year}
-			</p>
-		</>
+	const button = createElement('button', { onClick: setCount }, `count is ${count}`);
+	function setCount(event) {
+		event.target.innerText = `count is ${++count}`;
+	}
+
+	return createElement(
+		'div',
+		null,
+		createElement(
+			'div',
+			null,
+			createElement(
+				'a',
+				{ href: 'https://vite.dev', target: '_blank' },
+				createElement('img', { src: '/vite.svg', className: 'logo', alt: 'Vite logo' }),
+			),
+			createElement(
+				'a',
+				{ href: 'https://react.dev', target: '_blank' },
+				createElement('img', {
+					src: '/react.svg',
+					className: 'logo react',
+					alt: 'Logo react',
+				}),
+			),
+		),
+		createElement('h1', null, 'Vite + React'),
+		createElement(
+			'div',
+			{ className: 'card' },
+			button,
+			createElement('p', null, `Edit src/App.jsx and save to test HMR`),
+		),
+		createElement(
+			'p',
+			{ className: 'read-the-docs' },
+			`Click on the Vite and React logos to learn more in ${year}`,
+		),
 	);
 };
