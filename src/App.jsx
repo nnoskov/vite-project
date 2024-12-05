@@ -1,6 +1,7 @@
 import { createElement, useState } from 'react';
 import './App.css';
 
+const baseUrl = import.meta.env.BASE_URL;
 export const App = () => {
 	const year = new Date().getFullYear();
 	let [count] = useState(0);
@@ -19,13 +20,17 @@ export const App = () => {
 			createElement(
 				'a',
 				{ href: 'https://vite.dev', target: '_blank' },
-				createElement('img', { src: '/vite.svg', className: 'logo', alt: 'Vite logo' }),
+				createElement('img', {
+					src: `${baseUrl}/vite.svg`,
+					className: 'logo',
+					alt: 'Vite logo',
+				}),
 			),
 			createElement(
 				'a',
 				{ href: 'https://react.dev', target: '_blank' },
 				createElement('img', {
-					src: '/react.svg',
+					src: `${baseUrl}/react.svg`,
 					className: 'logo react',
 					alt: 'Logo react',
 				}),
