@@ -1,6 +1,8 @@
-# React + Vite
+# React + Vite + GitHub Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. Also github-page packages has been added for easier deploy a project.
+
+[Deploy of this project]: (https://nnoskov.github.io/vite-project/)
 
 Currently, two official plugins are available:
 
